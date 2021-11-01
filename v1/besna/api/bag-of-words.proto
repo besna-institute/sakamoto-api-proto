@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+package besna.api;
+
+import "besna/api/error.proto";
+
+option cc_enable_arenas = true;
+option java_multiple_files = true;
+option java_package = "institute.besna.api";
+option java_outer_classname = "BagOfWordsProto";
+option objc_class_prefix = "BAPI";
+
+message BagOfWords {
+  message Result {
+    string requestId = 1;
+    repeated string words = 2;
+    message WordFrequency {
+      string word = 1;
+      uint32 frequency = 2;
+    }
+    repeated WordFrequency bagOfWords = 3;
+  }
+  oneof processingResult {
+    Result success = 1;
+    besna.api.Error failure = 2;
+  }
+}
+
+message BagsOfWords {
+  string requestId = 1;
+  repeated BagOfWords responses = 2;
+}

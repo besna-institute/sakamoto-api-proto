@@ -3,6 +3,7 @@ syntax = "proto3";
 package besna.api.service.bag_of_words;
 
 import "google/api/annotations.proto";
+import "besna/api/bag-of-words.proto";
 import "besna/api/error.proto";
 import "besna/api/nested-sentence.proto";
 
@@ -13,39 +14,18 @@ option java_outer_classname = "BagOfWordsProto";
 option objc_class_prefix = "BAPI";
 
 service BagOfWordsApi {
-    rpc HttpBatchExtract (besna.api.NestedSentencesRequest) returns (BagsOfWords) {
+    rpc HttpBatchExtract (besna.api.NestedSentencesRequest) returns (besna.api.BagsOfWords) {
         option (google.api.http) = {
             post: "/v1/bag_of_words/http/batch"
             body: "sentences"
         };
     }
-    rpc HttpOnlineExtract (besna.api.NestedSentenceRequest) returns (BagOfWords) {
+    rpc HttpOnlineExtract (besna.api.NestedSentenceRequest) returns (besna.api.BagOfWords) {
         option (google.api.http) = {
             post: "/v1/bag_of_words/http/online"
             body: "sentence"
         };
     }
-    rpc BatchExtract (besna.api.NestedSentences) returns (BagsOfWords) {}
-    rpc OnlineExtract (stream besna.api.NestedSentence) returns (stream BagOfWords) {}
-}
-
-message BagOfWords {
-    message Result {
-        string requestId = 1;
-        repeated string words = 2;
-        message WordFrequency {
-            string word = 1;
-            uint32 frequency = 2;
-        }
-        repeated WordFrequency bagOfWords = 3;
-    }
-    oneof processingResult {
-        Result success = 1;
-        besna.api.Error failure = 2;
-    }
-}
-
-message BagsOfWords {
-    string requestId = 1;
-    repeated BagOfWords responses = 2;
+    rpc BatchExtract (besna.api.NestedSentences) returns (besna.api.BagsOfWords) {}
+    rpc OnlineExtract (stream besna.api.NestedSentence) returns (stream besna.api.BagOfWords) {}
 }
