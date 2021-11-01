@@ -1,17 +1,17 @@
 syntax = "proto3";
 
-package besna.ja.mecab_jumandic.v1;
+package besna.api.service.ja.mecab_jumandic;
 
 import "google/api/annotations.proto";
 import "besna/api/nested-sentence.proto";
 
 option cc_enable_arenas = true;
 option java_multiple_files = true;
-option java_package = "institute.besna.mecabJumandic.v1";
+option java_package = "institute.besna.api.service.ja";
 option java_outer_classname = "MeCabJumanDicProto";
 option objc_class_prefix = "BAPI";
 
-service MeCabJumanDicApi {
+service MecabJumandicApi {
   rpc HttpBatchAnalyze (besna.api.NestedSentencesRequest) returns (besna.api.NestedSentences) {
     option (google.api.http) = {
       post: "/v1/morpheme/mecab/jumandic/api/http/batch"

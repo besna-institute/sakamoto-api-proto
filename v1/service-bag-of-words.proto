@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package besna.bag_of_words.v1;
+package besna.api.service.bag_of_words;
 
 import "google/api/annotations.proto";
 import "besna/api/error.proto";
@@ -8,7 +8,7 @@ import "besna/api/nested-sentence.proto";
 
 option cc_enable_arenas = true;
 option java_multiple_files = true;
-option java_package = "institute.besna.bagOfWords.v1";
+option java_package = "institute.besna.api.service";
 option java_outer_classname = "BagOfWordsProto";
 option objc_class_prefix = "BAPI";
 
