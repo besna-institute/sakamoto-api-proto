@@ -26,5 +26,5 @@ service NormalizerApi {
     };
   }
   rpc BatchNormalize (besna.api.OriginalDescriptions) returns (besna.api.NestedSentences) {}
-  rpc OnlineNormalize (stream besna.api.OriginalDescription) returns (stream besna.api.NestedSentence) {}
+  rpc OnlineNormalize (besna.api.OriginalDescription) returns (besna.api.NestedSentence) {}
 }

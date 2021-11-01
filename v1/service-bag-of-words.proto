@@ -27,5 +27,5 @@ service BagOfWordsApi {
         };
     }
     rpc BatchExtract (besna.api.NestedSentences) returns (besna.api.BagsOfWords) {}
-    rpc OnlineExtract (stream besna.api.NestedSentence) returns (stream besna.api.BagOfWords) {}
+    rpc OnlineExtract (besna.api.NestedSentence) returns (besna.api.BagOfWords) {}
 }

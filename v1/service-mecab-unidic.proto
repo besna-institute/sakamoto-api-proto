@@ -25,5 +25,5 @@ service MecabUnidicApi {
     };
   }
   rpc BatchAnalyze (besna.api.NestedSentences) returns (besna.api.NestedSentences) {}
-  rpc OnlineAnalyze (stream besna.api.NestedSentence) returns (stream besna.api.NestedSentence) {}
+  rpc OnlineAnalyze (besna.api.NestedSentence) returns (besna.api.NestedSentence) {}
 }

@@ -25,5 +25,5 @@ service MecabJumandicContentWordApi {
     };
   }
   rpc BatchExtract (besna.api.NestedSentences) returns (besna.api.NestedSentences) {}
-  rpc OnlineExtract (stream besna.api.NestedSentence) returns (stream besna.api.NestedSentence) {}
+  rpc OnlineExtract (besna.api.NestedSentence) returns (besna.api.NestedSentence) {}
 }
