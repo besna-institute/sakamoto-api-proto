@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package besna.api;
+
+option cc_enable_arenas = true;
+option java_multiple_files = true;
+option java_package = "institute.besna.api";
+option java_outer_classname = "ErrorProto";
+option objc_class_prefix = "BAPI";
+
+message Error {
+  string requestId = 1;
+  string apiVersion = 2;
+  string id = 3;
+  string message = 4;
+}

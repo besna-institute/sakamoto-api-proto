@@ -1,0 +1,52 @@
+syntax = "proto3";
+
+package besna.api;
+
+import "besna/api/error.proto";
+
+option cc_enable_arenas = true;
+option java_multiple_files = true;
+option java_package = "institute.besna.api";
+option java_outer_classname = "NestedSentenceProto";
+option objc_class_prefix = "BAPI";
+
+message NestedSentence {
+  message TextParts {
+    message TextPart {
+      message Sentence {
+        string description = 1;
+        oneof analysis {
+          string result = 2;
+        }
+        repeated string words = 3;
+      }
+      message QuotationAndParts {
+        string openingBracket = 1;
+        string endingBracket = 2;
+        repeated TextPart parts = 3;
+      }
+      repeated Sentence sentences = 1;
+      map<string, QuotationAndParts> children = 2;
+    }
+    string requestId = 1;
+    string apiVersion = 2;
+    repeated TextPart parts = 3;
+  }
+  oneof processingResult {
+    TextParts success = 1;
+    besna.api.Error failure = 2;
+  }
+}
+
+message NestedSentences {
+  string requestId = 1;
+  repeated NestedSentences nestedSentences = 2;
+}
+
+message NestedSentenceRequest {
+  NestedSentence sentence = 1;
+}
+
+message NestedSentencesRequest {
+  NestedSentences sentences = 1;
+}

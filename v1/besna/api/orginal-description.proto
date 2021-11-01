@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+package besna.api;
+
+option cc_enable_arenas = true;
+option java_multiple_files = true;
+option java_package = "institute.besna.api";
+option java_outer_classname = "OriginalDescriptionProto";
+option objc_class_prefix = "BAPI";
+
+message OriginalDescription {
+  string requestId = 1;
+  oneof codePoints {
+    uint32 maxLength = 2;
+  }
+  string description = 3;
+}
+
+message OriginalDescriptions {
+  string requestId = 1;
+  oneof codePoints {
+    uint32 maxLength = 2;
+  }
+  repeated OriginalDescription descriptions = 3;
+}
+
+message OriginalDescriptionRequest {
+  OriginalDescription description = 1;
+}
+
+message OriginalDescriptionsRequest {
+  OriginalDescriptions descriptions = 1;
+}

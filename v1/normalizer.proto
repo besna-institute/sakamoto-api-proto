@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package besna.normalizer.v1;
+
+import "google/api/annotations.proto";
+import "besna/api/nested-sentence.proto";
+import "besna/api/original-description.proto";
+
+option cc_enable_arenas = true;
+option java_multiple_files = true;
+option java_package = "institute.besna.normalizer.v1";
+option java_outer_classname = "NormalizerProto";
+option objc_class_prefix = "BAPI";
+
+service NormalizerApi {
+  rpc HttpBatchNormalize (besna.api.OriginalDescriptionsRequest) returns (besna.api.NestedSentences) {
+    option (google.api.http) = {
+      post: "/v1/normalizer/api/http/batch"
+      body: "descriptions"
+    };
+  }
+  rpc HttpOnlineNormalize (besna.api.OriginalDescriptionRequest) returns (besna.api.NestedSentence) {
+    option (google.api.http) = {
+      post: "/v1/normalizer/api/http/online"
+      body: "description"
+    };
+  }
+  rpc BatchNormalize (besna.api.OriginalDescriptions) returns (besna.api.NestedSentences) {}
+  rpc OnlineNormalize (stream besna.api.OriginalDescription) returns (stream besna.api.NestedSentence) {}
+}
