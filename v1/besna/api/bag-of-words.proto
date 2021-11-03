@@ -12,7 +12,9 @@ option objc_class_prefix = "BAPI";
 
 message BagOfWords {
   message Result {
-    string requestId = 1;
+    oneof online {
+      string requestId = 1;
+    }
     repeated string words = 2;
     message WordFrequency {
       string word = 1;

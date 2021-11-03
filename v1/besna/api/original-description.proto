@@ -9,7 +9,9 @@ option java_outer_classname = "OriginalDescriptionProto";
 option objc_class_prefix = "BAPI";
 
 message OriginalDescription {
-  string requestId = 1;
+  oneof online {
+    string requestId = 1;
+  }
   oneof codePoints {
     uint32 maxLength = 2;
   }

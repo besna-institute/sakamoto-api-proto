@@ -28,7 +28,9 @@ message NestedSentence {
       repeated Sentence sentences = 1;
       map<string, QuotationAndParts> children = 2;
     }
-    string requestId = 1;
+    oneof online {
+      string requestId = 1;
+    }
     string apiVersion = 2;
     repeated TextPart parts = 3;
   }
