@@ -42,7 +42,7 @@ message NestedSentence {
 
 message NestedSentences {
   string requestId = 1;
-  repeated NestedSentences nestedSentences = 2;
+  repeated NestedSentence nestedSentences = 2;
 }
 
 message NestedSentenceRequest {
