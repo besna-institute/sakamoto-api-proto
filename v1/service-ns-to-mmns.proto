@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package besna.api.service.ja.ns_to_mmns;
+package besna.api.service.ns_to_mmns;
 
 import "besna/api/multimodal-nested-sentence.proto";
 import "besna/api/nested-sentence.proto";
