@@ -55,10 +55,10 @@ message MMNestedSentence {
           string description = 1;
           repeated MMCharacter characters = 2;
           oneof phoneme {
-            string representation = 3;
+            string phonemeRepresentation = 3;
           }
           oneof phonetic {
-            string representation = 4;
+            string phoneticRepresentation = 4;
           }
           oneof audio {
             bytes content = 5;
