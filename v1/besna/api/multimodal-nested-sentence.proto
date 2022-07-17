@@ -50,9 +50,7 @@ message MMNestedSentence {
             oneof image {
               bytes content = 3;
             }
-            oneof akaze {
-              repeated float vector = 4;
-            }
+            repeated float akaze = 4;
           }
           string description = 1;
           repeated MMCharacter characters = 2;
@@ -65,9 +63,7 @@ message MMNestedSentence {
           oneof audio {
             bytes content = 5;
           }
-          oneof audioFrames {
-            repeated MMAudioFrame frames = 6;
-          }
+          repeated MMAudioFrame audioFrames = 6;
         }
         string description = 1;
         oneof analysis {
