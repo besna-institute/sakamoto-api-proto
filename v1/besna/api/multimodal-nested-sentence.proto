@@ -34,10 +34,10 @@ message MMNestedSentence {
                 }
                 repeated MMGraphemeAndStroke tree = 3;
                 oneof ideographicDescriptionCharacter {
-                  string descriptoin = 4;
+                  string idc = 4;
                 }
                 oneof original {
-                  string description = 5;
+                  string character = 5;
                 }
               }
               oneof element {
