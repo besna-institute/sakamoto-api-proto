@@ -1,0 +1,109 @@
+syntax = "proto3";
+
+package besna.api;
+
+import "besna/api/error.proto";
+
+option cc_enable_arenas = true;
+option java_multiple_files = true;
+option java_package = "institute.besna.api";
+option java_outer_classname = "MultiModalNestedSentenceProto";
+option objc_class_prefix = "BAPI";
+
+message MMAudioFrame {
+  repeated float mfcc = 1;
+}
+
+message MMNestedSentence {
+  message MMTextParts {
+    message MMTextPart {
+      message MMSentence {
+        message MMToken {
+          message MMCharacter {
+            message MMGraphemeAndStroke {
+              message MMStroke {
+                string description = 1;
+                oneof image {
+                  bytes content = 2;
+                }
+              }
+              message MMGrapheme {
+                string description = 1;
+                oneof image {
+                  bytes content = 2;
+                }
+                repeated MMGraphemeAndStroke tree = 3;
+                oneof ideographicDescriptionCharacter {
+                  string descriptoin = 4;
+                }
+                oneof original {
+                  string description = 5;
+                }
+              }
+              oneof element {
+                MMGrapheme grapheme = 1;
+                MMStroke stroke = 2;
+              }
+            }
+            uint32 unicodeCodePoint = 1;
+            repeated MMGraphemeAndStroke tree = 2;
+            oneof image {
+              bytes content = 3;
+            }
+            oneof akaze {
+              repeated float vector = 4;
+            }
+          }
+          string description = 1;
+          repeated MMCharacter characters = 2;
+          oneof phoneme {
+            string representation = 3;
+          }
+          oneof phonetic {
+            string representation = 4;
+          }
+          oneof audio {
+            bytes content = 5;
+          }
+          oneof audioFrames {
+            repeated MMAudioFrame frames = 6;
+          }
+        }
+        string description = 1;
+        oneof analysis {
+          string result = 2;
+        }
+        repeated MMToken tokens = 3;
+      }
+      message MMQuotationAndParts {
+        string openingBracket = 1;
+        string endingBracket = 2;
+        repeated MMTextPart parts = 3;
+      }
+      repeated MMSentence sentences = 1;
+      map<string, MMQuotationAndParts> children = 2;
+    }
+    oneof online {
+      string requestId = 1;
+    }
+    string apiVersion = 2;
+    repeated MMTextPart parts = 3;
+  }
+  oneof processingResult {
+    MMTextParts success = 1;
+    besna.api.Error failure = 2;
+  }
+}
+
+message MMNestedSentences {
+  string requestId = 1;
+  repeated MMNestedSentence nestedSentences = 2;
+}
+
+message MMNestedSentenceRequest {
+  MMNestedSentence sentence = 1;
+}
+
+message MMNestedSentencesRequest {
+  MMNestedSentences sentences = 1;
+}

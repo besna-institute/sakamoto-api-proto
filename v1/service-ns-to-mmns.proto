@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package besna.api.service.ja.ns_to_mmns;
+
+import "besna/api/multimodal-nested-sentence.proto";
+import "besna/api/nested-sentence.proto";
+import "google/api/annotations.proto";
+
+option cc_enable_arenas = true;
+option java_multiple_files = true;
+option java_package = "institute.besna.api.service.ja";
+option java_outer_classname = "NestedSentenceToMultiModalNestedSentenceProto";
+option objc_class_prefix = "BAPI";
+
+service NestedSentenceToMultiModalNestedSentenceApi {
+  rpc HttpBatchAnalyze (besna.api.NestedSentencesRequest) returns (besna.api.MMNestedSentences) {
+    option (google.api.http) = {
+      post: "/v1/ns_to_mmns/api/http/batch"
+      body: "sentences"
+    };
+  }
+  rpc HttpOnlineAnalyze (besna.api.NestedSentenceRequest) returns (besna.api.MMNestedSentence) {
+    option (google.api.http) = {
+      post: "/v1/ns_to_mmns/api/http/online"
+      body: "sentence"
+    };
+  }
+  rpc BatchAnalyze (besna.api.NestedSentences) returns (besna.api.MMNestedSentences) {}
+  rpc OnlineAnalyze (besna.api.NestedSentence) returns (besna.api.MMNestedSentence) {}
+}

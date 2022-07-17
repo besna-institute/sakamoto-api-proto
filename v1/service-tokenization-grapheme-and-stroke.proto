@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package besna.api.service.ja.grapheme_and_stroke;
+
+import "besna/api/multimodal-nested-sentence.proto";
+import "google/api/annotations.proto";
+
+option cc_enable_arenas = true;
+option java_multiple_files = true;
+option java_package = "institute.besna.api.service.ja";
+option java_outer_classname = "TokenizationGraphemeAndStrokeProto";
+option objc_class_prefix = "BAPI";
+
+service TokenizationGraphemeAndStrokeApi {
+  rpc HttpBatchAnalyze (besna.api.MMNestedSentencesRequest) returns (besna.api.MMNestedSentences) {
+    option (google.api.http) = {
+      post: "/v1/grapheme_and_stroke/api/http/batch"
+      body: "sentences"
+    };
+  }
+  rpc HttpOnlineAnalyze (besna.api.MMNestedSentenceRequest) returns (besna.api.MMNestedSentence) {
+    option (google.api.http) = {
+      post: "/v1/grapheme_and_stroke/api/http/online"
+      body: "sentence"
+    };
+  }
+  rpc BatchAnalyze (besna.api.MMNestedSentences) returns (besna.api.MMNestedSentences) {}
+  rpc OnlineAnalyze (besna.api.MMNestedSentence) returns (besna.api.MMNestedSentence) {}
+}
