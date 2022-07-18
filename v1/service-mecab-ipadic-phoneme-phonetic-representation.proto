@@ -12,18 +12,16 @@ option java_outer_classname = "MecabIPADicPhonemePhoneticRepresentationProto";
 option objc_class_prefix = "BAPI";
 
 service MecabIpadicPhonemePhoneticRepresentationApi {
-  rpc HttpBatchAnalyze (besna.api.MMNestedSentencesRequest) returns (besna.api.MMNestedSentences) {
+  rpc BatchAnalyze (besna.api.MMNestedSentences) returns (besna.api.MMNestedSentences) {
     option (google.api.http) = {
       post: "/v1/phonetic_representation/api/http/batch"
       body: "sentences"
     };
   }
-  rpc HttpOnlineAnalyze (besna.api.MMNestedSentenceRequest) returns (besna.api.MMNestedSentence) {
+  rpc OnlineAnalyze (besna.api.MMNestedSentence) returns (besna.api.MMNestedSentence) {
     option (google.api.http) = {
       post: "/v1/phonetic_representation/api/http/online"
       body: "sentence"
     };
   }
-  rpc BatchAnalyze (besna.api.MMNestedSentences) returns (besna.api.MMNestedSentences) {}
-  rpc OnlineAnalyze (besna.api.MMNestedSentence) returns (besna.api.MMNestedSentence) {}
 }

@@ -44,11 +44,3 @@ message NestedSentences {
   string requestId = 1;
   repeated NestedSentence nestedSentences = 2;
 }
-
-message NestedSentenceRequest {
-  NestedSentence sentence = 1;
-}
-
-message NestedSentencesRequest {
-  NestedSentences sentences = 1;
-}

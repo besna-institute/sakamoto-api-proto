@@ -95,11 +95,3 @@ message MMNestedSentences {
   string requestId = 1;
   repeated MMNestedSentence nestedSentences = 2;
 }
-
-message MMNestedSentenceRequest {
-  MMNestedSentence sentence = 1;
-}
-
-message MMNestedSentencesRequest {
-  MMNestedSentences sentences = 1;
-}

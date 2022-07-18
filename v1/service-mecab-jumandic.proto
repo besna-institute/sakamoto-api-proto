@@ -12,18 +12,16 @@ option java_outer_classname = "MeCabJumanDicProto";
 option objc_class_prefix = "BAPI";
 
 service MecabJumandicApi {
-  rpc HttpBatchAnalyze (besna.api.NestedSentencesRequest) returns (besna.api.NestedSentences) {
+  rpc BatchAnalyze (besna.api.NestedSentences) returns (besna.api.NestedSentences) {
     option (google.api.http) = {
       post: "/v1/morpheme/mecab/jumandic/api/http/batch"
       body: "sentences"
     };
   }
-  rpc HttpOnlineAnalyze (besna.api.NestedSentenceRequest) returns (besna.api.NestedSentence) {
+  rpc OnlineAnalyze (besna.api.NestedSentence) returns (besna.api.NestedSentence) {
     option (google.api.http) = {
       post: "/v1/morpheme/mecab/jumandic/api/http/online"
       body: "sentence"
     };
   }
-  rpc BatchAnalyze (besna.api.NestedSentences) returns (besna.api.NestedSentences) {}
-  rpc OnlineAnalyze (besna.api.NestedSentence) returns (besna.api.NestedSentence) {}
 }

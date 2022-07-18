@@ -12,18 +12,16 @@ option java_outer_classname = "MeCabIPADicContentWordProto";
 option objc_class_prefix = "BAPI";
 
 service MecabIpadicContentWordApi {
-  rpc HttpBatchExtract (besna.api.NestedSentencesRequest) returns (besna.api.NestedSentences) {
+  rpc BatchExtract (besna.api.NestedSentences) returns (besna.api.NestedSentences) {
     option (google.api.http) = {
       post: "/v1/content_word/api/http/batch"
       body: "sentences"
     };
   }
-  rpc HttpOnlineExtract (besna.api.NestedSentenceRequest) returns (besna.api.NestedSentence) {
+  rpc OnlineExtract (besna.api.NestedSentence) returns (besna.api.NestedSentence) {
     option (google.api.http) = {
       post: "/v1/content_word/api/http/online"
       body: "sentence"
     };
   }
-  rpc BatchExtract (besna.api.NestedSentences) returns (besna.api.NestedSentences) {}
-  rpc OnlineExtract (besna.api.NestedSentence) returns (besna.api.NestedSentence) {}
 }

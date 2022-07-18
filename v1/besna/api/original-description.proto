@@ -25,11 +25,3 @@ message OriginalDescriptions {
   }
   repeated OriginalDescription descriptions = 3;
 }
-
-message OriginalDescriptionRequest {
-  OriginalDescription description = 1;
-}
-
-message OriginalDescriptionsRequest {
-  OriginalDescriptions descriptions = 1;
-}

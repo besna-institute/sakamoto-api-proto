@@ -13,18 +13,16 @@ option java_outer_classname = "NestedSentenceToMultiModalNestedSentenceProto";
 option objc_class_prefix = "BAPI";
 
 service NestedSentenceToMultiModalNestedSentenceApi {
-  rpc HttpBatchAnalyze (besna.api.NestedSentencesRequest) returns (besna.api.MMNestedSentences) {
+  rpc BatchAnalyze (besna.api.NestedSentences) returns (besna.api.MMNestedSentences) {
     option (google.api.http) = {
       post: "/v1/ns_to_mmns/api/http/batch"
       body: "sentences"
     };
   }
-  rpc HttpOnlineAnalyze (besna.api.NestedSentenceRequest) returns (besna.api.MMNestedSentence) {
+  rpc OnlineAnalyze (besna.api.NestedSentence) returns (besna.api.MMNestedSentence) {
     option (google.api.http) = {
       post: "/v1/ns_to_mmns/api/http/online"
       body: "sentence"
     };
   }
-  rpc BatchAnalyze (besna.api.NestedSentences) returns (besna.api.MMNestedSentences) {}
-  rpc OnlineAnalyze (besna.api.NestedSentence) returns (besna.api.MMNestedSentence) {}
 }

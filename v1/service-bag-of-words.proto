@@ -3,7 +3,6 @@ syntax = "proto3";
 package besna.api.service.bag_of_words;
 
 import "besna/api/bag-of-words.proto";
-import "besna/api/error.proto";
 import "besna/api/nested-sentence.proto";
 import "google/api/annotations.proto";
 
@@ -14,18 +13,16 @@ option java_outer_classname = "BagOfWordsProto";
 option objc_class_prefix = "BAPI";
 
 service BagOfWordsApi {
-    rpc HttpBatchExtract (besna.api.NestedSentencesRequest) returns (besna.api.BagsOfWords) {
+    rpc BatchExtract (besna.api.NestedSentences) returns (besna.api.BagsOfWords) {
         option (google.api.http) = {
             post: "/v1/bag_of_words/http/batch"
             body: "sentences"
         };
     }
-    rpc HttpOnlineExtract (besna.api.NestedSentenceRequest) returns (besna.api.BagOfWords) {
+    rpc OnlineExtract (besna.api.NestedSentence) returns (besna.api.BagOfWords) {
         option (google.api.http) = {
             post: "/v1/bag_of_words/http/online"
             body: "sentence"
         };
     }
-    rpc BatchExtract (besna.api.NestedSentences) returns (besna.api.BagsOfWords) {}
-    rpc OnlineExtract (besna.api.NestedSentence) returns (besna.api.BagOfWords) {}
 }
