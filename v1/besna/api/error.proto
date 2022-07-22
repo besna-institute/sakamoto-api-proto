@@ -7,6 +7,7 @@ option java_multiple_files = true;
 option java_package = "institute.besna.api";
 option java_outer_classname = "ErrorProto";
 option objc_class_prefix = "BAPI";
+option go_package = "./institute.besna.api";
 
 message Error {
   string requestId = 1;

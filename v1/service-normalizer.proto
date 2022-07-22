@@ -11,6 +11,7 @@ option java_multiple_files = true;
 option java_package = "institute.besna.api.service";
 option java_outer_classname = "NormalizerProto";
 option objc_class_prefix = "BAPI";
+option go_package = "./institute.besna.api.service";
 
 service NormalizerApi {
   rpc BatchNormalize (besna.api.OriginalDescriptions) returns (besna.api.NestedSentences) {

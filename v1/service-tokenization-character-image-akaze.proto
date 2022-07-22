@@ -10,6 +10,7 @@ option java_multiple_files = true;
 option java_package = "institute.besna.api.service.ja";
 option java_outer_classname = "TokenizationCharacterImageAkazeProto";
 option objc_class_prefix = "BAPI";
+option go_package = "./institute.besna.api.service.ja";
 
 service TokenizationCharacterImageAkazeApi {
   rpc BatchAnalyze (besna.api.MMNestedSentences) returns (besna.api.MMNestedSentences) {
